@@ -156,7 +156,7 @@ export default Vue.component(name, getVueOptions(name));
     }
 
     #resume-body {
-        padding: 40px 100px;
+        padding: 2px 80px;
 
         #experience-title, #education-title, #skills-title {
             font-size:26px;
@@ -164,7 +164,7 @@ export default Vue.component(name, getVueOptions(name));
         }
 
         .experience {
-            margin: 10px 0 10px 50px;
+            margin: 5px 0 10px 50px;
             ul {
                 margin: 5px 0 0 0;
             }
@@ -183,7 +183,7 @@ export default Vue.component(name, getVueOptions(name));
         .job-title, .degree {
             font-weight:700;
             color: @text-purple;
-            font-size:16px;
+            font-size:14px;
         }
 
         .experience-timeperiod, .education-timeperiod {

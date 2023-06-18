@@ -3,13 +3,13 @@
     <div id="resume-header">
         <div id="header-left">
             <h2 id="position">{{person.position}}</h2>
-            <h1 id="name">{{person.name.first}} {{person.name.last}}</h1>
+            <h1 v-if="person.name" id="name">{{person.name.first}} {{person.name.last}}</h1>
             <div id="info-flex">
-                <span id="email"><a :href='"mailto:" + person.contact.email'>
+                <span id="email"><a v-if="person.contact" :href='"mailto:" + person.contact.email'>
                   <i class="fa fa-envelope" aria-hidden="true"></i> {{person.contact.email}}</a></span>
-                <span id="phone"><i class='fa fa-phone-square' aria-hidden="true"></i> {{person.contact.phone}}</span>
-                <span v-if="person.contact.website" id="website"><a :href='person.contact.website'><i class="fa fa-home" aria-hidden="true"></i> {{person.contact.website}}</a></span>
-                <span v-if="person.contact.github" id="github"><a :href='contactLinks.github'><i class="fa fa-github" aria-hidden="true"></i> {{person.contact.github}}</a></span>
+                <span v-if="person.contact" id="phone"><i class='fa fa-phone-square' aria-hidden="true"></i> {{person.contact.phone}}</span>
+                <span v-if="person.contact" id="website"><a :href='person.contact.website'><i class="fa fa-home" aria-hidden="true"></i> {{person.contact.website}}</a></span>
+                <span v-if="person.contact" id="github"><a :href='contactLinks.github'><i class="fa fa-github" aria-hidden="true"></i> {{person.contact.github}}</a></span>
             </div>
         </div>
         <div id="header-right">
@@ -36,7 +36,7 @@
         <div id="education-container">
             <h2 id="education-title">{{ lang.education }}</h2>
             <div class="spacer"></div>
-            <div class="education" v-for="education in person.education" :key="education.degree">
+            <div class="education" v-for="education in person.education" :key="education.degrzee">
                 <h2 class="education-description">{{education.description}}</h2>
                 <p><span class="degree">{{education.degree}} | </span><span class="education-timeperiod">{{education.timeperiod}}</span></p>
             </div>
@@ -156,7 +156,7 @@ export default Vue.component(name, getVueOptions(name));
     }
 
     #resume-body {
-        padding: 40px 100px;
+        padding: 10px 80px;
 
         #experience-title, #education-title, #skills-title {
             font-size:26px;

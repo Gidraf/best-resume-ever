@@ -21,31 +21,6 @@
         <span class="job-description"> {{experience.description}} </span>
       </div>
     </div>
-    <div class="contact">
-      <h3>{{ lang.contact }}</h3>
-      <table>
-        <tr>
-          <td><a :href="contactLinks.email">{{person.contact.email}}</a></td>
-          <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td><a :href="contactLinks.phone">{{person.contact.phone}}</a></td>
-          <td><i class="fa fa-phone" aria-hidden="true"></i></td>
-        </tr>
-        <tr>
-          <td>{{person.contact.street}} <br> {{person.contact.city}}</td>
-          <td><i class="fa fa-home" aria-hidden="true"></i></td>
-        </tr>
-        <tr v-if="person.contact.website">
-          <td><a :href="person.contact.website">{{person.contact.website}}</a></td>
-          <td><i class="fa fa-globe" aria-hidden="true"></i></td>
-        </tr>
-        <tr v-if="person.contact.github">
-          <td><a :href="contactLinks.github">{{contactLinks.github}}</a></td>
-          <td><i class="fa fa-github" aria-hidden="true"></i></td>
-        </tr>
-      </table>
-    </div>
   </div>
   <div class="right half">
     <div class="education">
@@ -63,6 +38,31 @@
           <div :style="'width: '+skill.level+'%'" class="level"> </div>
         </div>
       </div>
+      <div class="contact">
+      <h3>{{ lang.contact }}</h3>
+      <table>
+        <tr>
+          <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+          <td><a :href="contactLinks.email">{{person.contact.email}}</a></td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+          <td><a :href="contactLinks.phone">{{person.contact.phone}}</a></td>
+        </tr>
+        <tr>
+          <td><i class="fa fa-home" aria-hidden="true"></i></td>
+          <td>{{person.contact.street}} <br> {{person.contact.city}}</td>
+        </tr>
+        <tr v-if="person.contact.website">
+          <td><i class="fa fa-globe" aria-hidden="true"></i></td>
+          <td><a :href="person.contact.website">{{person.contact.website}}</a></td>
+        </tr>
+        <tr v-if="person.contact.github">
+          <td><i class="fa fa-github" aria-hidden="true"></i></td>
+          <td><a :href="contactLinks.github">{{contactLinks.github}}</a></td>
+        </tr>
+      </table>
+    </div>
     </div>
     <span class="skills-other"> {{person.knowledge}} </span>
   </div>
@@ -81,7 +81,7 @@ export default Vue.component(name, getVueOptions(name));
 <style lang="less" scoped>
 #resume1 {
   font-family:'Source Sans Pro', sans-serif;
-  font-size:20px;
+  font-size:15px;
   padding-bottom:50px;
   a, a:focus, a:hover, a:visited {
     color:#616161;
@@ -120,11 +120,11 @@ export default Vue.component(name, getVueOptions(name));
   .name {
     border:1px solid black;
     text-transform:uppercase;
-    padding:10px 20px;
-    margin-top:80px;
+    padding:5px 20px;
+    margin-top:15px;
     margin-bottom:5px;
     font-family:'Open Sans', sans-serif;
-    font-size:35px;
+    font-size:20px;
     font-weight:600;
     letter-spacing:10px;
   }
@@ -133,13 +133,13 @@ export default Vue.component(name, getVueOptions(name));
     font-family:'Open Sans', sans-serif;
     font-size:smaller;
     color:#757575;
-    margin-bottom:40px;
+    margin-bottom:20px;
   }
   .image {
-    width:100px;
-    height:100px;
-    margin-top:50px;
-    margin-bottom:50px;
+    width:50px;
+    height:50px;
+    margin-top:10px;
+    margin-bottom:10px;
     .img {
       width:100%;
       height:100%;
@@ -153,8 +153,8 @@ export default Vue.component(name, getVueOptions(name));
   .contact {
     width:100%;
     table {
-      text-align:right;
-      float:right;
+      text-align:left;
+      float:left;
       margin-top:5px;
       color:#616161;
       font-size:20px;

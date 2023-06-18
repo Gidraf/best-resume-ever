@@ -1,25 +1,38 @@
-import yaml from 'js-yaml';
-import {
-    PERSON
-} from '../../resume/data.yml';
+// import yaml from 'js-yaml';
+// import {
+//     PERSON
+// } from '../../resume/data.yml';
+import axios from 'axios';
 import {
     terms
 } from '../terms';
 
 // Called by templates to decrease redundancy
-function getVueOptions (name) {
+function getVueOptions (name, email) {
     const opt = {
         name: name,
-        data () {
+        email: email,
+        data() {
+            
             return {
-                person: yaml.load(PERSON),
+                person: {},
                 terms: terms,
             };
+        },
+        mounted: function() {
+            const email = this.$route.query.email;
+            console.log(email);
+            axios
+      .post('http://localhost:5000/api/v1/get-cv', { email: email })
+      .then(({ data }) => {
+          this.person = data.data.PERSON;
+          console.log(this.person);
+      });
         },
         computed: {
             lang () {
                 const defaultLang = this.terms.en;
-                const useLang = this.terms[this.person.lang];
+                const useLang = this.terms['en'];
 
                 // overwrite non-set fields with default lang
                 Object.keys(defaultLang)
